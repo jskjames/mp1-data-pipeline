@@ -12,9 +12,7 @@ def remove_duplicates(df):
     result = df.drop_duplicates()
     rows_after = len(result)
 
-    logger.debug(
-        f"remove_duplicates: {rows_before} -> {rows_after} rows"
-    )
+    logger.debug(f"remove_duplicates: {rows_before} -> {rows_after} rows")
     return result
 
 
@@ -24,15 +22,14 @@ def handle_missing(df, axis="rows"):
         rows_before = len(df)
         result = df.dropna(axis=0)
         rows_after = len(result)
-        logger.debug(
-            f"handle_missing: {rows_before} -> {rows_after} rows"
-        )
+        logger.debug(f"handle_missing: {rows_before} -> {rows_after} rows")
     elif axis == "columns":
         columns_before = len(df.columns)
         result = df.dropna(axis=1)
         columns_after = len(result.columns)
         logger.debug(
-            f"handle_missing: {columns_before} -> {columns_after} columns"
+            f"handle_missing: {columns_before} -> "
+            f"{columns_after} columns"
         )
     else:
         logger.error(f"Unsupported missing value axis: {axis}")
